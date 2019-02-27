@@ -10,6 +10,7 @@ import scrapy
 
 class MediumCrawlerItem(scrapy.Item):
     title = scrapy.Field()
+    author = scrapy.Field()
     url = scrapy.Field()
     date = scrapy.Field()
     reading_time = scrapy.Field()
