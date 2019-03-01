@@ -14,5 +14,6 @@ class MediumCrawlerItem(scrapy.Item):
     url = scrapy.Field()
     date = scrapy.Field()
     reading_time = scrapy.Field()
+    claps = scrapy.Field()
     content = scrapy.Field()
     pass

@@ -48,12 +48,14 @@ class MediumSpiderSpider(scrapy.Spider):
         author = response.css(".ds-link::text").extract()[0]
         date = response.css(".ui-caption > time").attrib["datetime"]
         reading_time = response.css(".readingTime").attrib["title"]
+        claps = response.css(".js-multirecommendCountButton::text")[1].extract()
         cotent = response.css(".postArticle-content > section")
         item = MediumCrawlerItem()
         item["title"] = title
         item["author"] = author
         item["date"] = date
         item["reading_time"] = reading_time
+        item["claps"] = claps
         item["url"] = response.url
         #item.content = content
         yield item
