@@ -17,6 +17,7 @@ NEWSPIDER_MODULE = 'medium_crawler.spiders'
 # docker run -p 8050:8050 scrapinghub/splash
 SPLASH_URL = 'http://127.0.0.1:8050'
 DOWNLOADER_MIDDLEWARES = {
+    #'scrapy_fake_useragent.middleware.RandomUserAgentMiddleware': 400,
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
@@ -29,6 +30,7 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'medium_crawler (+http://www.yourdomain.com)'
+#USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64; rv:7.0.1) Gecko/20100101 Firefox/7.7'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -39,13 +41,13 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://doc.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
