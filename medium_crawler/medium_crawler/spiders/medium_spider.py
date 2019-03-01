@@ -44,10 +44,16 @@ class MediumSpiderSpider(scrapy.Spider):
             yield scrapy.Request(url, callback=self.parse_detail_page)
 
     def parse_detail_page(self, response):
-        title = response.css("h1::text").extract()[0] # extract 回傳 list
+        try:
+            title = response.css("h1::text").extract()[0] # extract 回傳 list
+        except IndexError:
+            title = response.css("h1 > strong::text").extract()[0]
         author = response.css(".ds-link::text").extract()[0]
         date = response.css(".ui-caption > time").attrib["datetime"]
-        reading_time = response.css(".readingTime").attrib["title"]
+        try:
+            reading_time = response.css(".readingTime").attrib["title"]
+        except:
+            reading_time = None
         claps = response.css(".js-multirecommendCountButton::text")[1].extract()
         cotent = response.css(".postArticle-content > section")
         item = MediumCrawlerItem()
